@@ -23,6 +23,43 @@ with objects and prototypes in JavaScript.
 For more information on how I built it, and why it looks
 the way it does, check out the screencast (paid).
 
+## Example Usage
+
+```js
+
+// Define a new "class" (constructor function)
+// -----------------------------------
+
+var Foo = ClassyObjects.define({
+  widget: function(){
+    console.log("widget");
+  }
+});
+
+// Extend this "class" to create another
+// ------------------------------------
+var Bar = Foo.extend({
+  bar: "baz",
+
+  quux: function(){
+    console.log("whatever");
+  },
+    
+  widget: function(){
+    this.super.widget();
+    console.log("widget modified");
+  }
+});
+
+// Use the objects that we defined
+// ------------------------------------
+
+var b = new Bar();
+console.log(b.bar);
+b.quux();
+b.widget();
+```
+
 ## Unsupported, Bug-Filled, Example Code
 
 This project is not suitable for use in any production
